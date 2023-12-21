@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="icon" href="img/sjcblogo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Nunito Sans", sans-serif;
+      }
+      nav#sidebar {
+        background: #2c3e50;
+        height: 100%;
+        position: fixed;
+        width: 250px;
+      }
+
+      .sidebar-list {
+        padding: 0;
+        list-style: none;
+        margin-top: 3px;
+      }
+
+      .nav-item {
+        padding: 10px;
+        text-decoration: none;
+        font-size: 16px;
+        color: #ecf0f1;
+        display: block;
+        transition: 0s;
+      }
+
+      .nav-item:hover {
+        background-color: #1f2933;
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .nav-item:not(.active) {
+        background-color: #2c3e50;
+        color: #fff;
+      }
+
+      .active {
+        background-color: #1f2933;
+        color: #ffffff;
+      }
+
+      .icon-field {
+        margin-right: 10px;
+      }
+
+      .brand-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        margin-top: -20px;
+      }
+
+      .brand-logo img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .navbar {
+        background-color: #55741c;
+        min-height: 4.5rem;
+      }
+
+      .brand-logo {
+        top: -10%;
+        transform: translateY(10%);
+        margin-left: -65%;
+      }
+
+      .dropdown-toggle:hover {
+        color: #eea000 !important;
+        transition: 0.4s;
+      }
+
+      .dropdown-item:hover {
+        color: #eea000;
+      }
+
+      .dropdown-item:focus {
+        color: #eea000;
+        background-color: transparent !important;
+      }
+
+      .users {
+        top: -70%;
+        transform: translateY(70%);
+      }
+
+      .bell {
+        top: -25%;
+        transform: translateY(25%);
+      }
+      main#view-panel {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+        margin-top: 4.5rem;
+        padding: 0.5em;
+      }
+      span.float-right.summary_icon {
+        font-size: 4rem;
+        position: absolute;
+        right: 1rem;
+        color: #ffffff96;
+      }
+
+      .card {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .Cards {
+        padding: 20px;
+        min-height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .Cards h1,
+      .Cards p {
+        text-align: left;
+        margin: 0;
+        letter-spacing: 2px;
+      }
+
+      .Cards h1 {
+        font-size: 2.5rem;
+      }
+      .card-Count:hover {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="sidebar">
+      <div class="sidebar-list">
+        <a href="#" class="nav-item nav-home active">
+          <span class="icon-field"><i class="fa-solid fa-desktop"></i></span>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item nav-transaction">
+          <span class="icon-field"
+            ><i class="fa-solid fa-pen-to-square"></i
+          ></span>
+          Transaction
+        </a>
+        <a href="#" class="nav-item nav-product">
+          <span class="icon-field">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </span>
+          Product
+        </a>
+        <a href="#" class="nav-item nav-inventory_report">
+          <span class="icon-field"
+            ><i class="fa-solid fa-envelope-open-text"></i
+          ></span>
+          Inventory Report
+        </a>
+        <a href="#" class="nav-item nav-sales_report">
+          <span class="icon-field"
+            ><i class="fa-solid fa-envelope-circle-check"></i
+          ></span>
+          Sales Report
+        </a>
+        <a href="#" class="nav-item nav-transaction_history">
+          <span class="icon-field"
+            ><i class="fa-solid fa-clock-rotate-left"></i
+          ></span>
+          Transaction History
+        </a>
+      </div>
+    </nav>
+    <nav
+      class="navbar navbar-light fixed-top"
+      style="padding: 0; min-height: 4.5rem"
+    >
+      <div class="container-fluid mt-2 mb-2">
+        <div class="col-lg-12">
+          <div class="col-md-4 float-left">
+            <a href="#" class="brand-logo">
+              <img
+                src="img/sjcbaggao.png"
+                style="width: 15em"
+                alt="Company Brand Logo"
+              />
+            </a>
+          </div>
+          <div class="float-right users">
+            <div class="dropdown mr-4">
+              <a
+                href="#"
+                class="text-white dropdown-toggle dropdown-link"
+                id="account_settings"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fa-solid fa-user mr-2"></i>
+              </a>
+              <div
+                class="dropdown-menu dropdown-link"
+                aria-labelledby="account_settings"
+                style="left: -4.7em"
+              >
+                <a
+                  class="dropdown-item"
+                  href="javascript:void(0)"
+                  id="manage_my_account"
+                  ><i class="fa fa-cog"></i> Manage Account</a
+                ><a class="dropdown-item" href="#"
+                  ><i class="fa fa-power-off"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="float-right bell">
+            <div class="dropdown">
+              <a href="#" class="nav-link dropdown-link" data-toggle="dropdown">
+                <i class="fa-solid fa-bell" style="color: #fff !important"></i>
+                <span
+                  class="badge badge-danger"
+                  style="
+                    border-radius: 50%;
+                    position: relative;
+                    top: -10px;
+                    left: -10px;
+                  "
+                >
+                </span>
+              </a>
+              <div class="dropdown-menu" style="left: -100%">
+                <a class="dropdown-item" href="#"></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">All Caught up!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main id="view-panel">
+      <div class="container-fluid">
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <a class="card-Count" href="#">
+                    <div class="card-body bg-primary Cards text-white">
+                      <span class="float-right summary_icon"
+                        ><i class="fa-solid fa-pen-to-square"></i
+                      ></span>
+                      <h1><b class="count-up"> </b></h1>
+                      <p><b>Transaction</b></p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <a class="card-Count" href="#">
+                    <div class="card-body bg-info Cards text-white">
+                      <span class="float-right summary_icon"
+                        ><i class="fa-solid fa-cart-shopping"></i
+                      ></span>
+                      <h1><b class="count-up"> </b></h1>
+                      <p><b>Products</b></p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <a class="card-Count" href="#">
+                    <div class="card-body bg-success Cards text-white">
+                      <span class="float-right summary_icon"
+                        ><i class="fa-solid fa-clock-rotate-left"></i
+                      ></span>
+                      <h1><b class="count-up"> </b></h1>
+                      <p><b>Transaction History</b></p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <h3 class="card-title text-center">Inventory Report</h3>
+                    <canvas id="inventoryChart" height="200"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="card shadow">
+                  <div class="card-body">
+                    <h3 class="card-title text-center">Sales Report</h3>
+                    <canvas id="salesChart" height="200"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Example data for Inventory Report
+    var inventoryData = {
+      labels: ["Product A", "Product B", "Product C", "Product D"],
+      datasets: [
+        {
+          label: "Inventory Quantity",
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+          data: [50, 30, 70, 20],
+        },
+      ],
+    };
+
+    // Example data for Sales Report
+    var salesData = {
+      labels: ["Product A", "Product B", "Product C", "Product D"],
+      datasets: [
+        {
+          label: "Sales Amount",
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1,
+          data: [2000, 1500, 3000, 1200],
+        },
+      ],
+    };
+
+    // Get the canvas elements
+    var inventoryCanvas = document
+      .getElementById("inventoryChart")
+      .getContext("2d");
+    var salesCanvas = document.getElementById("salesChart").getContext("2d");
+
+    // Create bar charts
+    var inventoryChart = new Chart(inventoryCanvas, {
+      type: "bar",
+      data: inventoryData,
+    });
+
+    var salesChart = new Chart(salesCanvas, {
+      type: "bar",
+      data: salesData,
+    });
+  </script>
+</html>
